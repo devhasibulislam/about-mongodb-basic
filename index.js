@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const todo = require('./todo/todo');
 
 // express app initialization
 const app = express();
@@ -11,6 +12,9 @@ mongoose.connect('mongodb://localhost/todo')
     .catch((error) => console.log(error))
 
 // application route
+app.use('/todo', todo);
+
+// default check route
 app.get('/', (req, res) => {
     res.send('express app connected')
 })
