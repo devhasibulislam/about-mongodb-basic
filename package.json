@@ -1,0 +1,24 @@
+{
+  "name": "mondodb-basic",
+  "version": "1.0.0",
+  "description": "mongodb using with nodejs alongside with expressjs and odm means object document mapping",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index",
+    "production": "NODE_ENV=production nodemon index",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasibulislam999/about-mongodb-basic.git"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "Hasibul Islam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hasibulislam999/about-mongodb-basic/issues"
+  },
+  "homepage": "https://github.com/hasibulislam999/about-mongodb-basic#readme"
+}
