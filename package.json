@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/hasibulislam999/about-mongodb-basic/issues"
   },
-  "homepage": "https://github.com/hasibulislam999/about-mongodb-basic#readme"
+  "homepage": "https://github.com/hasibulislam999/about-mongodb-basic#readme",
+  "dependencies": {
+    "mongoose": "^6.4.6"
+  }
 }
