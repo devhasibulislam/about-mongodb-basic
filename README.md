@@ -1,2 +1,2 @@
 # MongoDB basic
-** with elegant middle tier `mongoose` **
+**with elegant middle tier `mongoose`**
