@@ -1,5 +1,8 @@
 const express = require('express');
+
+// express app initialization
 const app = express();
+app.use(express.json());
 
 // application route
 app.get('/', (req, res) => {
