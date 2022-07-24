@@ -36,4 +36,11 @@ todoSchema.methods = {
   }
 }
 
+// query helper
+todoSchema.query = {
+  byLang: function (lang) {
+    return this.find({ title: new RegExp(lang, "i") });
+  }
+}
+
 module.exports = todoSchema;
