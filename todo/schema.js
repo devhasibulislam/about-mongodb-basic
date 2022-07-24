@@ -16,6 +16,12 @@ const todoSchema = mongoose.Schema({
   },
 });
 
+// static methods
+todoSchema.statics = {
+  findByJS: function () {
+    return this.find({ title: /js/i });
+  }
+}
 
 // instance methods
 todoSchema.methods = {
