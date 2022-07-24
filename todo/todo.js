@@ -27,6 +27,41 @@ router.get("/", (req, res) => {
         });
 });
 
+// GET ALL ACTIVE TODOS
+router.get("/active", async (req, res) => {
+    try {
+        const todo = new Todo();
+        const data = await todo.findActive();
+
+        res.status(200).json(data);
+        // res.status(200).json({ data });
+    } catch (error) {
+        res.status(500).json({ error: "server-side error occurs" });
+    }
+})
+
+// GET ALL INACTIVE TODOS
+router.get("/inactive", async (req, res) => {
+    try {
+        const todo = new Todo();
+        const data = await todo.findInActive();
+
+        res.status(200).json(data);
+        // res.status(200).json({ data });
+    } catch (error) {
+        res.status(500).json({ error: "server-side error occurs" });
+    }
+})
+
+// GET ALL ACTIVE TODOS USING CALLBACK
+router.get("/active-callback", (req, res) => {
+    const todo = new Todo();
+    todo.findActiveCallback((err, data) => {
+        // res.status(200).json(data);
+        res.status(200).json({data});
+    })
+})
+
 // GET ACTIVE TODOS
 router.get("/active", async (req, res) => {
     const todo = new Todo();
