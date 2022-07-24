@@ -5,7 +5,7 @@
 ### A backend todo app.
 
 ## Own
-make sure have installed `VSCODE`, `POSTMAN`, `MONGODB`
+make sure have installed `VSCODE`, `POSTMAN` & `MONGODB`
 ```bash
 git clone https://github.com/hasibulislam999/about-mongodb-basic.git
 cd about-mongodb-basic
