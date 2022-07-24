@@ -8,7 +8,10 @@ const Todo = new mongoose.model("Todo", todoSchema);
 // GET ALL THE TODOS
 router.get("/", checkLogin, (req, res) => {
     // Todo.find({ status: "active" })
-    Todo.find()
+    Todo.find({})
+        // .populate("user")
+        // .populate("user", "name username")
+        .populate("user", "name username -_id")
         .select({
             _id: 0,
             _v: 0,
