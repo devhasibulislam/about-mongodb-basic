@@ -1,33 +1,31 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const todo = require('./todo/todo');
+const express = require("express");
+const mongoose = require("mongoose");
+const todoHandler = require("./todo/todo");
 
 // express app initialization
 const app = express();
 app.use(express.json());
 
-// mongodb connection with mongoose
-mongoose.connect('mongodb://localhost/todo')
-    .then(() => console.log('connection successful.'))
-    .catch((error) => console.log(error))
+// database connection with mongoose
+mongoose
+    .connect("mongodb://localhost/todo", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => console.log("connection successful"))
+    .catch((err) => console.log(err));
 
-// application route
-app.use('/todo', todo);
-
-// default check route
-app.get('/', (req, res) => {
-    res.send('express app connected')
-})
+// application routes
+app.use("/todo", todoHandler);
 
 // default error handler
-app.use((err, req, res, next) => {
-    if (err.headersSent) {
+function errorHandler(err, req, res, next) {
+    if (res.headersSent) {
         return next(err);
-    } else {
-        res.status(500).json({ error: err });
     }
-})
+    res.status(500).json({ error: err });
+}
 
 app.listen(3000, () => {
-    console.log('express app listening on port 3000');
-})
+    console.log("app listening at port 3000");
+});
