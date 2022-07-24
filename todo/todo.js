@@ -58,18 +58,9 @@ router.get("/active-callback", (req, res) => {
     const todo = new Todo();
     todo.findActiveCallback((err, data) => {
         // res.status(200).json(data);
-        res.status(200).json({data});
+        res.status(200).json({ data });
     })
 })
-
-// GET ACTIVE TODOS
-router.get("/active", async (req, res) => {
-    const todo = new Todo();
-    const data = await todo.findActive();
-    res.status(200).json({
-        data,
-    });
-});
 
 // GET ACTIVE TODOS with callback
 router.get("/active-callback", (req, res) => {
@@ -81,7 +72,7 @@ router.get("/active-callback", (req, res) => {
     });
 });
 
-// GET ACTIVE TODOS
+// GET JS KEYWORD BASED TITLE
 router.get("/js", async (req, res) => {
     const data = await Todo.findByJS();
     res.status(200).json({
@@ -91,10 +82,8 @@ router.get("/js", async (req, res) => {
 
 // GET TODOS BY LANGUAGE
 router.get("/language", async (req, res) => {
-    const data = await Todo.find().byLanguage("react");
-    res.status(200).json({
-        data,
-    });
+    const data = await Todo.find().byLang("js");
+    res.status(200).json(data);
 });
 
 // GET A TODO by ID
