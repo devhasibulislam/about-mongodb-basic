@@ -105,19 +105,18 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST A TODO
-router.post("/", (req, res) => {
-    const newTodo = new Todo(req.body);
-    newTodo.save((err) => {
-        if (err) {
-            res.status(500).json({
-                error: "There was a server side error!",
-            });
-        } else {
-            res.status(200).json({
-                message: "Todo was inserted successfully!",
-            });
-        }
+router.post("/", checkLogin, async (req, res) => {
+    const newTodo = new Todo({
+        ...req.body,
+        user: req.userID
     });
+
+    try {
+        await newTodo.save();
+        res.status(200).json({ success: "todo addition successful" })
+    } catch (error) {
+        res.status(500).json({ error: "server-side error" })
+    }
 });
 
 // POST MULTIPLE TODO
